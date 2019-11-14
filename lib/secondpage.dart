@@ -16,7 +16,7 @@ class _SecondPageState extends State<SecondPage> {
 
       body: Container(
         child: Center(
-          child: Text("You have landed to the secong page itself..."),
+          child: Text("spalsg screen eneded we have moved to second page itself......"),
         ),
       ),
     );

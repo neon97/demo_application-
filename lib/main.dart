@@ -1,85 +1,79 @@
-//importing libraries
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/secondpage.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: App(),
-    debugShowCheckedModeBanner: false,     // to remove debuuging banner from the app tou can use this...
+    home: SplashScreen(),
+    debugShowCheckedModeBanner: false,
+    theme: ThemeData(
+      fontFamily: "Exo2",
+    ),
   ));
 }
 
-class App extends StatefulWidget {
+class SplashScreen extends StatefulWidget {
   @override
-  _AppState createState() => _AppState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _AppState extends State<App> {
-  int number = 1; //datatype integer
+class _SplashScreenState extends State<SplashScreen> {
+  startTime() async {
+    var duration = new Duration(seconds: 3);
+    return new Timer(duration, navigation);
+  }
+
+  void navigation() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => SecondPage()));
+  }
+
+  //this is navigation part that has toi viewed after the duration...
+
+  @override
+  void initState() {
+    //boilerplate for intizialition the application shortcut is init
+    // TODO: implement initState
+    super.initState();
+    // startTime();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Title"),
-        centerTitle: true,
-      ),
       body: Container(
+        //coloring the container itself
+        color: Colors.deepOrange,
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-
-        //remeber you have to use mediaquerry in your first container so that you mae an dynamic app that can run on all devices itself....
-
-        color: Colors.red, 
         child: Center(
-          child: Container(
-            height: 50.0,
-            width: 50.0,
-            color: Colors.green
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            //as column is alwayd in vertical direction itself
+            //so the main axis will be vertical itself
+            //cross alignment will be horizontal
+            children: <Widget>[
+              Image(
+                // image: NetworkImage("https://png.pngtree.com/element_our/png/20180912/coffee-time-png_91570.jpg"),
+                ///you can paste url of an image inside the Network Image("url")
+                ///for An Asset Image just add the image in an folder then add it to pubspec.yaml then to the AssestImage("name ot the image")
+                image: AssetImage("image/logo.png"),
+              ),
+              Text(
+                "BlogPage",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40.0,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+
+              Text("You have landed to the world of Blogs")
+            ],
           ),
-        ),   //parent container with red color
-        
-       
-      ),
-
-
-      //mediaquerry
-
-
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-
-          ///this is how you can navigate to the next page itself....for going ahead you need to use 
-          ///PUSH
-          ///for popping some of the screen 
-          ///POP is required...which will be explaineid in the sessions afterward...till taht please have an RND with push...
-          
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => SecondPage()));   //pushing to second page
-
-
-        },
+        ),
       ),
     );
   }
 }
-
-// for running your application ::::  flutter run on terminal
-
-//hot resload :: r
-//hot Restart :: R
-
-///to build your appliocation in puvlish mode:   ::: flutter build apk
-///
-///@ tht moment location will be seen on the termonal itself...
-///
-///for stopping ending application :::::: q
-///
-
-
-
-
-
-
