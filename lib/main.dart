@@ -1,7 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/secondpage.dart';
+import 'package:flutter_practice/loginpage.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -26,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void navigation() {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => SecondPage()));
+        .push(MaterialPageRoute(builder: (context) => LoginPage()));
   }
 
   //this is navigation part that has toi viewed after the duration...
@@ -36,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
     //boilerplate for intizialition the application shortcut is init
     // TODO: implement initState
     super.initState();
-    // startTime();
+    startTime();
   }
 
   @override
