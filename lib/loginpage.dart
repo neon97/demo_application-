@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/homepage.dart';
+import 'package:flutter_practice/registerpage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -60,8 +61,8 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               style: TextStyle(fontSize: 22.0, color: Colors.white),
               decoration: InputDecoration(
-                helperText: check==true?"":"Wrong credentials !!",
-                helperStyle: TextStyle(color: Colors.white,fontSize: 18.0),
+                  helperText: check == true ? "" : "Wrong credentials !!",
+                  helperStyle: TextStyle(color: Colors.white, fontSize: 18.0),
                   hintText: "Password",
                   hintStyle: TextStyle(fontSize: 25.0, color: Colors.white)),
               controller: password,
@@ -85,11 +86,12 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 color: Colors.white,
                 onPressed: () {
-                  if (username.text == "5460" &&   //and we will check both of them
+                  if (username.text ==
+                          "5460" && //and we will check both of them
                       password.text == "admin") {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => Homepage()));
-                  }else{
+                  } else {
                     print("sorry you have entereed wrong credentials");
                     setState(() {
                       check = false;
@@ -107,10 +109,13 @@ class _LoginPageState extends State<LoginPage> {
       floatingActionButton: FloatingActionButton(
         elevation: 20.0,
         backgroundColor: Colors.white,
-        child: Icon(Icons.add,color: Colors.deepOrange,),
-        onPressed: ()
-        {
-          print("we are heading ot register page itself");
+        child: Icon(
+          Icons.add,
+          color: Colors.deepOrange,
+        ),
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => RegisterPage()));
         },
       ),
     );
