@@ -1,55 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/trendingpage.dart';
 import 'list.dart';
 
-class Homepage extends StatefulWidget {
+class TrendingPage extends StatefulWidget {
   @override
-  _HomepageState createState() => _HomepageState();
+  _TrendingPageState createState() => _TrendingPageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _TrendingPageState extends State<TrendingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
-        title: Text("Hii, Raj"),
+        title: Text("Trending"),
         centerTitle: true,
       ),
 
       //drwer
-      drawer: Drawer(
-        child: Column(
-          children: <Widget>[
-            UserAccountsDrawerHeader(
-              decoration: BoxDecoration(color: Colors.deepOrange),
-              accountEmail: Text("raj@gmail.com"),
-              accountName: Text("Raj"),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage("image/logo.png"),
-              ),
-            ),
-            ListTile(
-              trailing: Icon(Icons.home),
-              title: Text("Homepage"),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Homepage()));
-              },
-            ),
-            ListTile(
-              trailing: Icon(Icons.trending_up),
-              title: Text("Trendingpage"),
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => TrendingPage()));
-              },
-            )
-          ],
-        ),
-      ),
-
+      
 //asume it we have 10 blogs.....
 
       body: Container(
@@ -62,16 +30,7 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
 
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.deepOrange,
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-        onPressed: () {
-          print("You can add your blogs here !!!");
-        },
-      ),
+      
     );
   }
 
@@ -103,8 +62,11 @@ class _HomepageState extends State<Homepage> {
                 height: deviceHeight / 4,
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                child:Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
                       item[index],
@@ -121,6 +83,19 @@ class _HomepageState extends State<Homepage> {
                     )
                   ],
                 ),
+                
+                Row(
+                  children: <Widget>[
+                    Text("5",style: TextStyle(fontSize: 20.0),),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Icon(Icons.favorite,color: Colors.red,)
+                  ],
+                )
+
+                  ],
+                )
               )
             ],
           ),
