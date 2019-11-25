@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/loginpage.dart';
 import 'package:flutter_practice/trendingpage.dart';
 import 'list.dart';
 
@@ -7,14 +8,56 @@ class Homepage extends StatefulWidget {
   _HomepageState createState() => _HomepageState();
 }
 
+
+
 class _HomepageState extends State<Homepage> {
+
+  Future<bool> onwillpop()
+  {
+    return showDialog(
+      context: context,
+      builder: (context)=>AlertDialog(
+        backgroundColor: Colors.deepOrange,
+        title: Text("Are you sure ",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+        content: Text("Do you want to logout ?",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+        actions: <Widget>[
+          FlatButton(
+            child: Text("Yes",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+            onPressed: ()
+            {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginPage()));
+            },
+          ),
+
+          FlatButton(
+            child: Text("No",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+            onPressed: ()
+            {
+              Navigator.of(context).pop(false);
+            },
+          )
+        ],
+      )
+    );
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: onwillpop,
+      child: Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
         title: Text("Hii, Raj"),
         centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.send),
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => LoginPage()));
+            },
+          )
+        ],
       ),
 
       //drwer
@@ -72,6 +115,7 @@ class _HomepageState extends State<Homepage> {
           print("You can add your blogs here !!!");
         },
       ),
+    ),
     );
   }
 

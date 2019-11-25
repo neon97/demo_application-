@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/homepage.dart';
 import 'package:flutter_practice/registerpage.dart';
@@ -8,9 +10,41 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+    Future<bool> onwillpop()
+  {
+    return showDialog(
+      context: context,
+      builder: (context)=>AlertDialog(
+        backgroundColor: Colors.deepOrange,
+        title: Text("Are you sure ",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+        content: Text("Do you want to exit ?",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+        actions: <Widget>[
+          FlatButton(
+            child: Text("Yes",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+            onPressed: ()
+            {
+              Navigator.of(context).pop(exit(0));
+            },
+          ),
+
+          FlatButton(
+            child: Text("No",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+            onPressed: ()
+            {
+              Navigator.of(context).pop(false);
+            },
+          )
+        ],
+      )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: onwillpop,
+      child: Scaffold(
       body: Container(
         padding: EdgeInsets.all(30.0),
         color: Colors.deepOrange,
@@ -118,7 +152,10 @@ class _LoginPageState extends State<LoginPage> {
               .push(MaterialPageRoute(builder: (context) => RegisterPage()));
         },
       ),
-    );
+    ),
+  
+    )
+    ;
   }
 
   ///this bracket ends statless widget
