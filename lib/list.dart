@@ -10,7 +10,7 @@
     "https://clickup.com/blog/wp-content/uploads/2018/07/tech-blogs-1400x1050.png"
   ];
 
-  List item = [
+  List<String> item = [
   "Blog",
   "Macbook",
   "Application",
@@ -30,4 +30,27 @@ List<String> blogsubtitle = [
   "Programming Languages for 2019",
   "What Youtubers Earn ??",
   "Robotics Start AI & ML !!"
+];
+
+List<String> details =[
+  "Helpful innovation, powered by On-Device Machine Learning + you: we're bringing back the Android Developer Challenge and asking you to help us unlock new experiences on Android. Submit your idea by December 2!",
+  "Demand for the ios developers are increasing day by day",
+  "Demand for the php developers are increasing day by day",
+  "Demand for the angular developers are increasing day by day",
+  "Demand for the java developers are increasing day by day",
+  "Demand for the .net developers are increasing day by day",
+  "Demand for the android developers are increasing day by day",
+  "Demand for the android developers are increasing day by day",
+  "Demand for the android developers are increasing day by day",
+  "Demand for the android developers are increasing day by day",
+  "Demand for the android developers are increasing day by day",
+  "Demand for the android developers are increasing day by day",
+];
+
+List<String> taggs = [
+  "Apple",
+  "Computers",
+  "Corporate",
+  "Flutter",
+  "wiseKreator"
 ];
