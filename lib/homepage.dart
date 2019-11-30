@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/addblog.dart';
 import 'package:flutter_practice/detailpage.dart';
 import 'package:flutter_practice/loginpage.dart';
 import 'package:flutter_practice/trendingpage.dart';
@@ -123,6 +124,8 @@ class _HomepageState extends State<Homepage> {
             color: Colors.white,
           ),
           onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => ImagePost()));
             print("You can add your blogs here !!!");
           },
         ),
